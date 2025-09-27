@@ -2,16 +2,13 @@ package tests;
 
 import org.json.simple.JSONObject;
 import org.testng.annotations.Test;
-
 import io.restassured.http.ContentType;
-
 import static io.restassured.RestAssured.*;
 public class LocalApi {
 
 	@Test
-	public void testLocalApi(){
+	public void testRetrieve(){
 		baseURI = "http://localhost:3000";
-		
 		given().get("/banks").then().statusCode(200)
 		.log().all();
 	}
@@ -49,10 +46,11 @@ public class LocalApi {
 	
 	@Test(priority=4)
 	public void testDelete() {
-		
 		baseURI = "http://localhost:3000";
 		when().delete("/banks/7")
 		 .then().statusCode(200).log().all();
 	}
+
 	
 }
+
